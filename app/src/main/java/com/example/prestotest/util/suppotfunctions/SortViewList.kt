@@ -1,6 +1,7 @@
 package com.example.prestotest.util.suppotfunctions
 
 import com.example.prestotest.ui.fragment.data.Flight
+import com.example.prestotest.util.constants.Constants
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -17,77 +18,67 @@ class SortViewList {
             return sortByDay(sortByCost(flightList))
         }
 
+        //used for setting priority for each day based current day
+        //according to priority days would be sorted in list
         fun fetchInt(day: String): Int {
             val calendar: Calendar = Calendar.getInstance()
             calendar.timeInMillis = System.currentTimeMillis()
             val count: Int = calendar.get(Calendar.DAY_OF_WEEK)
             when (day) {
-                "sunday" -> if (1 < count) {
-                    //day has passed
-                    return 100 + 7
+                Constants.DaysOfWeekString.SUNDAY -> if (1 < count) {
+                    return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT + Constants.PrioritySearchDaysConstants.PRIORITY_SUNDAY
                 } else {
-                    //day has not passed
-                    return 100 -7
+                    return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT - Constants.PrioritySearchDaysConstants.PRIORITY_SUNDAY
                 }
-                "monday" ->
+                Constants.DaysOfWeekString.MONDAY ->
                     if (2 < count) {
-                        return 100 + 6
+                        return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT + Constants.PrioritySearchDaysConstants.PRIORITY_MONDAY
                     } else {
-                        return 100  - 6
+                        return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT - Constants.PrioritySearchDaysConstants.PRIORITY_MONDAY
                     }
-                "tuesday" ->
+                Constants.DaysOfWeekString.TUESDAY ->
                     if (3 < count) {
-                        return 100 + 5
+                        return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT + Constants.PrioritySearchDaysConstants.PRIORITY_TUESDAY
                     } else {
-                        return 100 - 5
+                        return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT - Constants.PrioritySearchDaysConstants.PRIORITY_TUESDAY
                     }
-                "wednesday" -> if (4 < count) {
-                    return 100 + 4
+                Constants.DaysOfWeekString.WEDNESDAY -> if (4 < count) {
+                    return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT + Constants.PrioritySearchDaysConstants.PRIORITY_WEDNESDAY
                 } else {
-                    return 100 - 4
+                    return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT - Constants.PrioritySearchDaysConstants.PRIORITY_WEDNESDAY
                 }
-                "thursday" -> if (5 < count) {
-                    return 100 + 3
+                Constants.DaysOfWeekString.THURSDAY -> if (5 < count) {
+                    return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT + Constants.PrioritySearchDaysConstants.PRIORITY_THURSDAY
                 } else {
-                    return 100 - 3
+                    return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT - Constants.PrioritySearchDaysConstants.PRIORITY_THURSDAY
                 }
-                "friday" -> if (6 < count) {
-                    return 100 + 2
+                Constants.DaysOfWeekString.FRIDAY -> if (6 < count) {
+                    return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT + Constants.PrioritySearchDaysConstants.PRIORITY_FRIDAY
                 } else {
-                    return 100 - 2
+                    return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT - Constants.PrioritySearchDaysConstants.PRIORITY_FRIDAY
                 }
-                "saturday" -> if (7 < count) {
-                    return 100 + 1
+                Constants.DaysOfWeekString.SATURDAY-> if (7 < count) {
+                    return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT + Constants.PrioritySearchDaysConstants.PRIORITY_SATURDAY
                 } else {
-                    return 100 - 1
+                    return Constants.PrioritySearchDaysConstants.PRIORITY_CONSTANT - Constants.PrioritySearchDaysConstants.PRIORITY_SATURDAY
+
                 }
                 else -> return 1
             }
         }
 
-        fun fetchDay(day: Int): String {
-            when (day) {
-                1 -> return "Monday"
-                2 -> return "Tuesday"
-                3 -> return "Wednesday"
-                4 -> return "Thursday"
-                5 -> return "Friday"
-                6 -> return "Saturday"
-                7 -> return "Saturday"
-                else -> return "Monday"
-            }
-        }
-
+        //sort array based on price
         fun sortByCost(flightList: ArrayList<Flight>): ArrayList<Flight> {
             return ArrayList(flightList.sortedWith(compareBy({ it.price.toInt() })))
         }
 
+        //sort array based on day of week
         fun sortByDay(flightList: ArrayList<Flight>): ArrayList<Flight> {
             for (flight in flightList) {
                 flight.arrival_time = TimeFormatter.formatTimeToTwelveHours(flight.arrival_time)
                 flight.arrival_day_int = fetchInt(flight.arrival_day)
             }
-            return  ArrayList(flightList.sortedWith(compareBy { it.arrival_day_int }))
+            return ArrayList(flightList.sortedWith(compareBy { it.arrival_day_int }))
         }
     }
 }
