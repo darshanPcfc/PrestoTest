@@ -1,0 +1,45 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.example.prestotest.ui.fragment.data.Flight" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        card_view:cardCornerRadius="@dimen/card_corner_radius"
+        card_view:cardElevation="@dimen/card_elevation"
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_10_dp">
+
+            <TextView
+                android:id="@+id/tv_display_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_6_dp"
+                android:text="@{@string/str_arrival_data(item.arrival_day,item.arrival_time)}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_view_size_medium" />
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_6_dp"
+                android:text="@{'$'+item.price}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_view_size_medium" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -11,9 +11,15 @@ import com.example.prestotest.di.viewModelsInjection
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
-
+/**
+ * Created by Darshan Patel
+ * Usage: base application class
+ * How to call: gets called by os at launch
+ * Useful parameter: none required
+ */
 //Declare all application component here
 class BaseApplication : Application() {
+    //for checking internet
     private val isNetworkConnected: Boolean
         get() {
             val connectivityManager =
@@ -44,7 +50,7 @@ class BaseApplication : Application() {
         }
     }
 
-    //init koin
+    //initialise koin
     //module list will create all modules injection which can be further used throughout application
     private fun initialiseKoin() {
         startKoin {
@@ -54,6 +60,8 @@ class BaseApplication : Application() {
         }
     }
 
+    //companion object will create single instance of application
+    //will provide method for checking network
     companion object {
         //initial values required while launching application
         var instance: BaseApplication? = null

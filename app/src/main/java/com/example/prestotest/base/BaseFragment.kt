@@ -13,6 +13,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 
+/**
+ * Created by Darshan Patel
+ * Usage: abstract base fragment for all application fragments
+ * How to call: extend it with your fragment
+ * Useful parameter: Databinding object and baseViewModel object
+ */
 abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragment() {
 
 
@@ -43,6 +49,7 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragmen
      * @return view model instance
      */
     abstract val viewModel: V
+    //used for navigation through nav graph architecture
     lateinit var navController: NavController
 
     override fun onAttach(context: Context) {
@@ -93,12 +100,6 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragmen
     fun showKeyboard() {
         if (baseActivity != null) {
             baseActivity!!.showKeyboard()
-        }
-    }
-
-    fun openActivityOnTokenExpire() {
-        if (baseActivity != null) {
-            baseActivity!!.openActivityOnTokenExpire()
         }
     }
 

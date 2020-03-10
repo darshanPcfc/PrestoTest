@@ -1,0 +1,115 @@
+{
+  "ﬂights": [
+    {
+      "departing_city": "San Francisco",
+      "departure_day": "Monday",
+      "departure_time": "11:00",
+      "arriving_city": "Dallas",
+      "arrival_day": "Monday",
+      "arrival_time": "13:00",
+      "price": "130"
+    },
+    {
+      "departing_city": "San Francisco",
+      "departure_day": "Sunday",
+      "departure_time": "11:00",
+      "arriving_city": "Dallas",
+      "arrival_day": "Monday",
+      "arrival_time": "15:00",
+      "price": "110"
+    },
+    {
+      "departing_city": "Mumbai",
+      "departure_day": "Sunday",
+      "departure_time": "11:00",
+      "arriving_city": "Dallas",
+      "arrival_day": "Tuesday",
+      "arrival_time": "16:00",
+      "price": "135"
+    },
+    {
+      "departing_city": "Mumbai",
+      "departure_day": "Sunday",
+      "departure_time": "11:00",
+      "arriving_city": "Toronto",
+      "arrival_day": "Tuesday",
+      "arrival_time": "13:00",
+      "price": "135"
+    },
+    {
+      "departing_city": "San Francisco",
+      "departure_day": "Monday",
+      "departure_time": "11:00",
+      "arriving_city": "Toronto",
+      "arrival_day": "Wednesday",
+      "arrival_time": "13:00",
+      "price": "150"
+    },
+    {
+      "departing_city": "Mumbai",
+      "departure_day": "Sunday",
+      "departure_time": "11:00",
+      "arriving_city": "Toronto",
+      "arrival_day": "Friday",
+      "arrival_time": "13:00",
+      "price": "145"
+    },
+    {
+      "departing_city": "San Francisco",
+      "departure_day": "Monday",
+      "departure_time": "11:00",
+      "arriving_city": "Chicago",
+      "arrival_day": "Tuesday",
+      "arrival_time": "13:00",
+      "price": "135"
+    },
+    {
+      "departing_city": "San Francisco",
+      "departure_day": "Sunday",
+      "departure_time": "11:00",
+      "arriving_city": "Chicago",
+      "arrival_day": "Tuesday",
+      "arrival_time": "15:00",
+      "price": "150"
+    },
+    {
+      "departing_city": "San Francisco",
+      "departure_day": "Sunday",
+      "departure_time": "11:00",
+      "arriving_city": "Chicago",
+      "arrival_day": "Tuesday",
+      "arrival_time": "14:00",
+      "price": "120"
+    },
+    {
+      "departing_city": "San Francisco",
+      "departure_day": "Sunday",
+      "departure_time": "11:00",
+      "arriving_city": "Chicago",
+      "arrival_day": "Wednesday",
+      "arrival_time": "15:00",
+      "price": "150"
+    }
+  ],
+  "stock": [
+    {
+      "location": "San Francisco",
+      "ingredient": "Salt",
+      "stock_available": "True"
+    },
+    {
+      "location": "Mumbai",
+      "ingredient": "Sugar",
+      "stock_available": "true"
+    },
+    {
+      "location": "San Francisco",
+      "ingredient": "Tumeric",
+      "stock_available": "true"
+    },{
+      "location": "San Francisco",
+      "ingredient": "Chilli",
+      "stock_available": "false"
+    }
+  ]
+}

@@ -5,6 +5,12 @@ import com.crashlytics.android.Crashlytics
 import com.example.prestotest.util.constants.Constants
 import timber.log.Timber
 
+/**
+ * Created by Darshan Patel 24/02/2020
+ * Usage: for logging crashses only in production environment
+ * How to call: would be called by custom logger
+ *
+ */
 class CrashReportingTree : Timber.Tree() {
 
     override fun log(priority: Int, tag: String?, message: String, throwable: Throwable?) {

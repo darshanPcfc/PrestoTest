@@ -1,5 +1,11 @@
 package com.example.prestotest.util.constants;
 
+/**
+ * Created by Darshan Patel 24/02/2020
+ * Usage: list down all application constants here
+ * How to call: call through class name and variable as all variable inside this class would be static
+ *
+ */
 public class Constants {
     public static final String CRASHLYTICS_KEY_PRIORITY = "priority";
     public static final String CRASHLYTICS_KEY_TAG = "tag";
@@ -13,6 +19,10 @@ public class Constants {
     }
 
     public interface ApiFields {
+        String CONTENT_TYPE = "application";
+    }
+
+    public interface PrioritySearchDaysConstants {
         String CONTENT_TYPE = "application";
     }
 }

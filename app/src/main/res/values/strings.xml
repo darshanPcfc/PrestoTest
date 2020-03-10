@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">PrestoTest</string>
+    <string name="icon_content">iconContent</string>
+    <string name="str_hint_search">Search Box</string>
+    <string name="str_hint_enter_text">Enter text</string>
+    <string name="str_hint_location">Enter Location</string>
+    <string name="str_hint_product">Enter Product</string>
+    <string name="str_btn_lbl_search">Search</string>
+    <string name="str_arrival_data">Arrives : %1$s at  %2$s</string>
+    <string name="str_error_no_availability">The Requested Ingredient is \nnot available at \nthis moment</string>
+    <string name="str_error_enter_details">Enter Product And Location both to search</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.prestotest.ni
+package com.example.prestotest.ni.retrofit
 
 import com.example.prestotest.BuildConfig
 import com.example.prestotest.base.BaseApplication
@@ -30,11 +30,19 @@ val HEADER_PRAGMA = "Pragma"
 // cache size mention here
 private val cacheSize = (5 * 1024 * 1024).toLong() // 5 MB
 
+//provides retrofit caching mechanism
 private fun cache(): Cache {
-    return Cache(File(BaseApplication.instance?.cacheDir, Constants.retrofitCacheFile), cacheSize)
+    return Cache(
+        File(BaseApplication.instance?.cacheDir, Constants.retrofitCacheFile),
+        cacheSize
+    )
 }
 
-private fun getLogInterceptor() = HttpLoggingInterceptor().apply { level = sLogLevel }
+//intercepter for retrofit request and response
+private fun getLogInterceptor() = HttpLoggingInterceptor().apply {
+    level =
+        sLogLevel
+}
     .setLevel(HttpLoggingInterceptor.Level.BODY)
 
 /**
@@ -86,9 +94,11 @@ private fun offlineInterceptor(): Interceptor {
     }
 }
 
+//will build retrofit client using okhttp
 fun createNetworkClient() =
     retrofitClient(okHttpClient())
 
+//ok http adapter for calling api through retrofit adapter
 private fun okHttpClient() = OkHttpClient.Builder()
     .cache(cache())
     .addInterceptor(getLogInterceptor()) // used if network off
@@ -98,7 +108,8 @@ private fun okHttpClient() = OkHttpClient.Builder()
     .addInterceptor(headersInterceptor())
     .build()
 
-
+//retrofit adapter for calling api through retrofit adapter base url parameter goes here
+//base url will be fetched as per build module from gradle.properties file
 private fun retrofitClient(httpClient: OkHttpClient): Retrofit =
     Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
@@ -107,7 +118,7 @@ private fun retrofitClient(httpClient: OkHttpClient): Retrofit =
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-
+//adding header to retrofit adapter
 fun headersInterceptor() = Interceptor { chain ->
     chain.proceed(
         chain.request().newBuilder()
@@ -116,6 +127,7 @@ fun headersInterceptor() = Interceptor { chain ->
     )
 }
 
+//timeout to call any api
 private fun setTimeOutToOkHttpClient(okHttpClientBuilder: OkHttpClient.Builder) =
     okHttpClientBuilder.apply {
         readTimeout(30L, TimeUnit.SECONDS)
